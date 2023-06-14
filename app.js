@@ -1,8 +1,17 @@
 import chalk from "chalk"
+import yargs from "yargs"
+import {hideBin} from "yargs/helpers"
 import getNotes from "./src/notes.js"
+const yarg = yargs(hideBin(process.argv))
 
-const msg = getNotes()
-const greenMsg = chalk.blue.bold.inverse("Success")
+yarg.version("1.1.0")
 
-console.log(msg);
-console.log(greenMsg)
+yarg.command({
+    command: "add",
+    describe: "Add a new note",
+    handler: function () {
+        console.log("Adding a new note")
+    }
+})
+
+console.log(yarg.argv)
