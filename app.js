@@ -22,4 +22,20 @@ yarg.command({
     }
 })
 
+yarg.command({
+    command: "list",
+    describe: "List your notes",
+    handler: function () {
+        console.log("Listing out all notes")
+    }
+})
+
+yarg.command({
+    command: "read",
+    describe: "Read a note",
+    handler: function () {
+        console.log("Reading a note")
+    }
+})
+
 console.log(yarg.argv)
