@@ -28,7 +28,12 @@ function saveNotes(notes) {
 }
 
 function removeNotes(title) {
-    console.log(title)
+    const notes = loadNotes()
+    const notesToKeep = notes.filter((note) => {
+        return note.title !== title
+    })
+
+    saveNotes(notesToKeep)
 }
 
 function loadNotes() {
