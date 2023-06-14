@@ -14,4 +14,12 @@ yarg.command({
     }
 })
 
+yarg.command({
+    command: "remove",
+    describe: "Remove a note",
+    handler: function() {
+        console.log("Removing the note")
+    }
+})
+
 console.log(yarg.argv)
