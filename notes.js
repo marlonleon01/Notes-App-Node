@@ -16,10 +16,10 @@ function addNotes(title, body) {
             title: title,
             body: body
         })    
-        console.log("New note added")
         saveNotes(notes)
+        console.log(chalk.bgGreen("New note added"))
     } else {
-        console.log("Note title taken")
+        console.log(chalk.bgRed("Note title taken"))
     }
 }
 
