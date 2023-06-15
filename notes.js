@@ -21,11 +21,6 @@ function addNotes(title, body) {
     }
 }
 
-function saveNotes(notes) {
-    const dataJSON = JSON.stringify(notes)
-    fs.writeFileSync("notes.json", dataJSON)
-}
-
 function removeNotes(title) {
     const notes = loadNotes()
     const notesToKeep = notes.filter((note) => note.title !== title)
@@ -38,6 +33,15 @@ function removeNotes(title) {
     }
 }
 
+function listNotes() {
+    const notes = loadNotes()
+    
+    console.log(chalk.green("Your Notes"))
+    notes.forEach(note => {
+        console.log(note.title)
+    });
+}
+
 function loadNotes() {
     try {
         const dataBuffer = fs.readFileSync("notes.json")
@@ -48,4 +52,9 @@ function loadNotes() {
     }
 }
 
-export {getNotes, addNotes, removeNotes}
+function saveNotes(notes) {
+    const dataJSON = JSON.stringify(notes)
+    fs.writeFileSync("notes.json", dataJSON)
+}
+
+export {getNotes, addNotes, removeNotes, listNotes}

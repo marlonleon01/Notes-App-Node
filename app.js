@@ -1,6 +1,6 @@
 import yargs from "yargs"
 import {hideBin} from "yargs/helpers"
-import {getNotes, addNotes, removeNotes} from "./notes.js"
+import {getNotes, addNotes, removeNotes, listNotes} from "./notes.js"
 const yarg = yargs(hideBin(process.argv))
 
 yarg.version("1.1.0")
@@ -44,7 +44,7 @@ yarg.command({
     command: "list",
     describe: "List your notes",
     handler: () => {
-        console.log("Listing out all notes")
+        listNotes()
     }
 })
 
