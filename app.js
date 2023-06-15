@@ -20,7 +20,7 @@ yarg.command({
             type: "string"
         }
     },
-    handler: function (argv) {
+    handler: (argv) => {
         addNotes(argv.title, argv.body)
     }
 })
@@ -35,7 +35,7 @@ yarg.command({
             type: "string"
         }
     },
-    handler: function(argv) {
+    handler: (argv) => {
         removeNotes(argv.title)
     }
 })
@@ -43,7 +43,7 @@ yarg.command({
 yarg.command({
     command: "list",
     describe: "List your notes",
-    handler: function () {
+    handler: () => {
         console.log("Listing out all notes")
     }
 })
@@ -51,7 +51,7 @@ yarg.command({
 yarg.command({
     command: "read",
     describe: "Read a note",
-    handler: function () {
+    handler: () => {
         console.log("Reading a note")
     }
 })
