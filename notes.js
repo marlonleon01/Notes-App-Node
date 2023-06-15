@@ -1,15 +1,11 @@
 import chalk from "chalk"
 import fs from "fs"
 
-function getNotes() {
-    return "Your notes"
-}
-
 function addNotes(title, body) {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter((note) => note.title === title)
+    const duplicateNote = notes.find(note => note.title === title)
 
-    if (duplicateNotes.length === 0) {
+    if (!duplicateNote) {
         notes.push({
             title: title,
             body: body
@@ -36,10 +32,23 @@ function removeNotes(title) {
 function listNotes() {
     const notes = loadNotes()
     
-    console.log(chalk.green("Your Notes"))
+    console.log(chalk.bgGreen("Your Notes"))
     notes.forEach(note => {
         console.log(note.title)
     });
+}
+
+function readNotes(title) {
+    const notes = loadNotes()
+
+    const foundNote = notes.filter(note => note.title === title)
+
+    if (foundNote.length > 0) {
+        console.log(chalk.green(foundNote[0].title))
+        console.log(foundNote[0].body)
+    } else {
+        console.log(chalk.red("No note found"))
+    }
 }
 
 function loadNotes() {
@@ -57,4 +66,4 @@ function saveNotes(notes) {
     fs.writeFileSync("notes.json", dataJSON)
 }
 
-export {getNotes, addNotes, removeNotes, listNotes}
+export {addNotes, removeNotes, listNotes, readNotes}

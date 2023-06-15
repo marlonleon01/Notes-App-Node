@@ -1,6 +1,6 @@
 import yargs from "yargs"
 import {hideBin} from "yargs/helpers"
-import {getNotes, addNotes, removeNotes, listNotes} from "./notes.js"
+import {addNotes, removeNotes, listNotes, readNotes} from "./notes.js"
 const yarg = yargs(hideBin(process.argv))
 
 yarg.version("1.1.0")
@@ -51,8 +51,15 @@ yarg.command({
 yarg.command({
     command: "read",
     describe: "Read a note",
-    handler: () => {
-        console.log("Reading a note")
+    builder: {
+        title: {
+            describe: "Note title",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: (argv) => {
+        readNotes(argv.title)
     }
 })
 
