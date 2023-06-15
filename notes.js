@@ -41,11 +41,11 @@ function listNotes() {
 function readNotes(title) {
     const notes = loadNotes()
 
-    const foundNote = notes.filter(note => note.title === title)
+    const foundNote = notes.find(note => note.title === title)
 
-    if (foundNote.length > 0) {
-        console.log(chalk.green(foundNote[0].title))
-        console.log(foundNote[0].body)
+    if (foundNote) {
+        console.log(chalk.green(foundNote.title))
+        console.log(foundNote.body)
     } else {
         console.log(chalk.red("No note found"))
     }
