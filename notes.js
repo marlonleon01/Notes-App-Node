@@ -1,3 +1,4 @@
+import chalk from "chalk"
 import fs from "fs"
 
 function getNotes() {
@@ -32,8 +33,13 @@ function removeNotes(title) {
     const notesToKeep = notes.filter((note) => {
         return note.title !== title
     })
-
-    saveNotes(notesToKeep)
+    
+    if (notesToKeep.length !== notes.length) {
+        saveNotes(notesToKeep)
+        console.log(chalk.bgGreen("Note remove"))
+    } else {
+        console.log(chalk.bgRed("No note found"))
+    }
 }
 
 function loadNotes() {
